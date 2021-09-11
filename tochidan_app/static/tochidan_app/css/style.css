@@ -1,0 +1,23 @@
+main {
+    padding: 6rem 0;
+/*    background-color: cornflowerblue;*/
+    height: 100vh;
+}
+
+.container {
+    color: darkgray;
+}
+
+footer {
+    background-color: black;
+    height: 100px;
+}
+
+
+.form_add {
+    padding:20px;
+}
+
+.alert {
+    margin-top: 30px;
+}

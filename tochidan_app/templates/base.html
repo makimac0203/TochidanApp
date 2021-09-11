@@ -1,0 +1,67 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MusicApp</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'tochidan_app/css/style.css' %}">
+    {% block extraheader %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
+        <div class="container justify-content-between">
+            <h1>TochiDanApp</h1>
+        </div>
+        <div>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                </li>
+                {% else %}
+                <li class="nav-item {% block active_signup %}{% endblock %}">
+                    <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
+                </li>
+                <li class="nav-item {% block active_login %}{% endblock %}">
+                    <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </nav>
+    {% if messages %}
+        <div class="container">
+            <div class="row">
+                <div class="my-div-style w-100">
+                    <ul class="messages" style="list-style: none;">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <main>
+        <div class="container">
+            {% block header %}{% endblock %}
+            {% block contents %}{% endblock %}
+            {% block main %}{% endblock %}
+
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li>
+                <a href="{% url 'tochidan_app:contact' %}">お問い合わせ</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

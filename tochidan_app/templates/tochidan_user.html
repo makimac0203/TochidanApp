@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block title %}マイページ{% endblock %}
+
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="my-div-style w-100">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    こんにちは<h2>{{ object.user }}</h2>さん
+                    あなたのダンスチーム名は<h3>{{ object.team_name }}</h3>です。
+                    {% if object.photo %}
+                        <p>チーム写真</p>
+                        <img src="/media/{{ object.photo }}" height="300px">
+                    {% endif %}
+                    <div class="clearfix">
+                        <a class="btn btn-primary float-right" href="#">
+                            ダンスチームを登録する
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

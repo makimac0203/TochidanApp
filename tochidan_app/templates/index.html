@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+    <main class="masthead text-center text-white">
+        <div class="container">
+            <h1>TochiDanApp</h1>
+            <h2>ダンスコンテストへエントリーしよう！</h2>
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">ログイン</a>
+        </div>
+    </main>
+{% endblock %}
+

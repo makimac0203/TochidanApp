@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block contents %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>お問い合わせ</h1>
+      <p>ご要望、ご質問等は以下のフォームよりお名前、メールアドレス、お問い合わせ内容をご記入いただき「送信」ボタンをクリックして下さい。</p>
+      <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

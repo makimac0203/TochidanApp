@@ -1,0 +1,10 @@
+Django==3.2
+pip==21.2.4
+psycopg2==2.9.1
+Pillow==8.3.1
+django-allauth==0.45.0
+django-bootstrap5
+selenium
+django-pygments-renderer==0.0.1
+pytz==2021.1
+setuptools==57.4.0
