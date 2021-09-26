@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
 from django.core.mail import EmailMessage
+from .models import TochidanApp
 
 
 class ContactForm(forms.Form):
@@ -43,3 +44,14 @@ class ContactForm(forms.Form):
 
         message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list, cc=cc_list)
         message.send()
+
+
+class TochidanCreateForm(forms.ModelForm):
+    class Meta:
+        model = TochidanApp
+        fields = ('team_name', 'photo',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'

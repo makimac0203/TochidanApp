@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}エントリーチーム一覧{% endblock %}
+
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="my-div-style w-100">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    {% for tochidan_user in object_list %}
+                        <dev class="post-preview">
+                            <h2 class="post-title">
+                                {{ tochidan_user.team_name }}
+                            </h2>
+                            <img src="/media/{{ tochidan_user.photo }}" width="50px">
+                            <p class="post-meta">{{ tochidan_user.created_at }}</p>
+                        </dev>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -12,12 +12,16 @@
                     あなたのダンスチーム名は<h3>{{ object.team_name }}</h3>です。
                     {% if object.photo %}
                         <p>チーム写真</p>
-                        <img src="/media/{{ object.photo }}" height="300px">
+                        <img src="/media/{{ object.photo }}" width="300px">
                     {% endif %}
                     <div class="clearfix">
-                        <a class="btn btn-primary float-right" href="#">
-                            ダンスチームを登録する
-                        </a>
+                    {% if object == true %}
+                        <span aria-hidden="true">
+                        <a class="btn btn-primary float-right" href="{% url 'tochidan_app:tochidan_user_create' %}">ダンスチームを登録する</a>
+                        </span>
+                    {% else %}
+                        <a class="btn btn-success mt-5 mb-3" href="{% url 'tochidan_app:tochidan_user_update' object.pk %}">編集</a>
+                    {% endif %}
                     </div>
                 </div>
             </div>
