@@ -19,6 +19,11 @@
         </div>
         <div>
             <ul class="navbar-nav ml-auto">
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_list' %}">ユーザーリスト</a>
+                </li>
+                {% endif %}
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>

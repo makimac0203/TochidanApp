@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import TemplateView
@@ -7,6 +7,8 @@ from .forms import ContactForm, TochidanCreateForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import TochidanApp
+
+
 
 
 class IndexView(generic.TemplateView):
@@ -69,7 +71,7 @@ class TochidanUserUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse_lazy('tochidan_app:tochidan_user_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
-        messages.success(self.request,'チーム情報を更新しました。')
+        messages.success(self.request, 'チーム情報を更新しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -77,10 +79,15 @@ class TochidanUserUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class TochidanUserListView(LoginRequiredMixin, generic.ListView):
+class TochidanUserListView(LoginRequiredMixin, generic.ListView, TemplateView):
     model = TochidanApp
     template_name = 'tochidan_user_list.html'
 
     def get_queryset(self):
         tochidan_apps = TochidanApp.objects.order_by('-created_at')
         return tochidan_apps
+
+    # def user_list(request):
+    #
+    #     if not request.user.is_superuser:
+    #         return redirect('/accounts/login/')
