@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
 from django.views.generic.edit import FormView
 from .forms import ContactForm, TochidanCreateForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import TochidanApp
-
+from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
 
 
@@ -79,15 +80,10 @@ class TochidanUserUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class TochidanUserListView(LoginRequiredMixin, generic.ListView, TemplateView):
+class SuperUserOnlyView(SuperuserRequiredMixin, ListView):
     model = TochidanApp
     template_name = 'tochidan_user_list.html'
 
     def get_queryset(self):
         tochidan_apps = TochidanApp.objects.order_by('-created_at')
         return tochidan_apps
-
-    # def user_list(request):
-    #
-    #     if not request.user.is_superuser:
-    #         return redirect('/accounts/login/')
