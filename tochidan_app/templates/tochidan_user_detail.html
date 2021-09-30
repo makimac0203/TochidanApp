@@ -8,11 +8,22 @@
         <div class="row">
             <div class="my-div-style w-100">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    こんにちは<h2>{{ object.user }}</h2>さん
-                    あなたのダンスチーム名は<h3>{{ object.team_name }}</h3>です。
+                    <p>こんにちは{{ object.user }}さん</p>
+                    あなたのダンスチームは{{ object.team_name }}です。
                     {% if object.photo %}
                         <p>チーム写真</p>
                         <img src="/media/{{ object.photo }}" width="300px">
+                    {% endif %}
+                    {% if object.record %}
+                        <p>使用曲</p>
+                        <audio controls="controls">
+                            <source src="{{ object.record.url }}" type="audio/ogg" />
+                            <source src="{{ object.record.url }}" type="audio/mpeg" />
+                            <source src="{{ object.record.url }}" type="audio/wav" />
+                            <source src="{{ object.record.url }}" type="audio/mp3" />
+                            <source src="{{ object.record.url }}" type="audio/acc" />
+                            <source src="{{ object.record.url }}" type="audio/aif" />
+                        </audio>
                     {% endif %}
                     <div class="clearfix">
                     {% if object == true %}
@@ -20,7 +31,9 @@
                         <a class="btn btn-primary float-right" href="{% url 'tochidan_app:tochidan_user_create' %}">ダンスチームを登録する</a>
                         </span>
                     {% else %}
-                        <a class="btn btn-success mt-5 mb-3" href="{% url 'tochidan_app:tochidan_user_update' object.pk %}">編集</a>
+                        {% if request.user.id == object.user.id %}
+                            <a class="btn btn-success mt-5 mb-3" href="{% url 'tochidan_app:tochidan_user_update' object.pk %}">編集</a>
+                        {% endif %}
                     {% endif %}
                     </div>
                 </div>

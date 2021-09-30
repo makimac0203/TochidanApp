@@ -20,21 +20,24 @@
         <div>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_superuser %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_list' %}">ユーザーリスト</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_list' %}">ユーザーリスト</a>
+                    </li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_detail' user.pk %}">マイページ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
+                    </li>
                 {% else %}
-                <li class="nav-item {% block active_signup %}{% endblock %}">
-                    <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
-                </li>
-                <li class="nav-item {% block active_login %}{% endblock %}">
-                    <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
-                </li>
+                    <li class="nav-item {% block active_signup %}{% endblock %}">
+                        <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
+                    </li>
+                    <li class="nav-item {% block active_login %}{% endblock %}">
+                        <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
+                    </li>
                 {% endif %}
             </ul>
         </div>

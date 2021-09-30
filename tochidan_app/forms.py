@@ -49,7 +49,7 @@ class ContactForm(forms.Form):
 class TochidanCreateForm(forms.ModelForm):
     class Meta:
         model = TochidanApp
-        fields = ('team_name', 'photo',)
+        fields = ('team_name', 'photo', 'record',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
