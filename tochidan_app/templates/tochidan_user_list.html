@@ -8,6 +8,7 @@
         <div class="row">
             <div class="my-div-style w-100">
                 <div class="col-lg-8 col-md-10 mx-auto">
+                {% if object_list  %}
                     {% for tochidan_user in object_list %}
                         <a href="{% url 'tochidan_app:tochidan_user_detail' tochidan_user.pk %}">
                         <div class="post-preview">
@@ -27,11 +28,16 @@
                                     <source src="{{ tochidan_user.record.url }}" type="audio/aif" />
                                 </audio>
                             {% endif %}
-                            <p class="post-meta">{{ tochidan_user.created_at }}</p>
+                            {% if tochidan_user.created_at %}
+                                <p class="post-meta">{{ tochidan_user.created_at }}</p>
+                            {% endif %}
                         </div>
                         </a>
                         <hr>
                     {% endfor %}
+                {% else %}
+                    <p>ユーザーは登録されていません。</p>
+                {% endif %}
                 </div>
             </div>
         </div>

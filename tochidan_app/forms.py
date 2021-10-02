@@ -47,9 +47,11 @@ class ContactForm(forms.Form):
 
 
 class TochidanCreateForm(forms.ModelForm):
+    number_of_people = forms.ChoiceField(choices=[(num, num) for num in range(1, 101)])
+
     class Meta:
         model = TochidanApp
-        fields = ('team_name', 'photo', 'record',)
+        fields = ('team_name', 'photo', 'record', 'number_of_people',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
