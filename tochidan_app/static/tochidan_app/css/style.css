@@ -1,11 +1,23 @@
+body {
+    height: 100%;
+    width: 100%;
+}
+
+nav p {
+    color: aliceblue;
+}
+
+
+
+
 main {
     padding: 6rem 0;
 /*    background-color: cornflowerblue;*/
-    height: 100vh;
+/*    height: 100%;*/
 }
 
 .container {
-    color: darkgray;
+    color: dimgrey;
 }
 
 footer {
@@ -21,3 +33,4 @@ footer {
 .alert {
     margin-top: 30px;
 }
+

@@ -6,20 +6,27 @@
 {% block active_login %}active{% endblock %}
 
 {% block main %}
-    <div class="container">
-        <h1>ログイン</h1>
-        <form method="post" action="{% url 'account_login' %}">
-
-            {% csrf_token %}
-            {% bootstrap_form form %}
-
-            {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-            {% endif %}
-
-            {% bootstrap_button button_type="submit" content="ログイン" %}
-
-            <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れましたか？</a></p>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card md-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">ログイン</h4>
+                </div>
+                <div class="card-body">
+                    <form class="form_add" method="post" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+{#                        {% buttons %}#}
+                        {% bootstrap_button button_type="submit" content="ログイン" %}
+                    </form>
+                        <p class="card-footer text-muted text-center">
+                            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れましたか？</a>
+                        </p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

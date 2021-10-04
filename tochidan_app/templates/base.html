@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MusicApp</title>
     {% bootstrap_css %}
@@ -13,35 +13,40 @@
     {% block extraheader %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar  navbar-expand flex-md-row navbar-dark bg-dark ">
+    <nav class="navbar  navbar-expand-lg  navbar-dark bg-dark ">
         <div class="container justify-content-between">
             <a class="navbar-brand" href="{% url 'tochidan_app:index' %}">TochiDanApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_list' %}">ユーザーリスト</a>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">マイページ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
+                        </li>
+                        <li class="nav-item">
+                            <p>{{ user }}でログイン中</p>
+                        </li>
+                    {% else %}
+                        <li class="nav-item {% block active_signup %}{% endblock %}">
+                            <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
+                        </li>
+                        <li class="nav-item {% block active_login %}{% endblock %}">
+                            <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-        <div>
-            <ul class="navbar-nav ml-auto">
-                {% if user.is_superuser %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tochidan_app:tochidan_user_list' %}">ユーザーリスト</a>
-                    </li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">マイページ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item {% block active_signup %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
-                    </li>
-                    <li class="nav-item {% block active_login %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-
     </nav>
     {% if messages %}
         <div class="container">

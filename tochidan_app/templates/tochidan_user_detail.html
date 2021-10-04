@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load embed_video_tags %}
 
 {% block title %}マイページ{% endblock %}
 
@@ -9,27 +9,73 @@
             <div class="my-div-style w-100">
 {#            {% for object in tochidanapp %}#}
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <p>こんにちは{{ object.user }}さん</p>
-                    あなたのダンスチームは{{ object.team_name }}です。
+                    <h2>こんにちは{{ object.user }}さん</h2>
+                    <h3>あなたのダンスチームは{{ object.team_name }}です。</h3>
+                    <hr>
                     {% if object.photo %}
-                        <p>チーム写真</p>
+                        <h4>チーム写真</h4>
                         <img src="/media/{{ object.photo }}" width="300px">
                     {% endif %}
-                    {% if object.record %}
-                        <p>使用曲</p>
+                    <hr>
+                    {% if object.audio %}
+                        <h4>使用曲</h4>
                         <audio controls="controls">
-                            <source src="{{ object.record.url }}" type="audio/ogg" />
-                            <source src="{{ object.record.url }}" type="audio/mpeg" />
-                            <source src="{{ object.record.url }}" type="audio/wav" />
-                            <source src="{{ object.record.url }}" type="audio/mp3" />
-                            <source src="{{ object.record.url }}" type="audio/acc" />
-                            <source src="{{ object.record.url }}" type="audio/aif" />
+                            <source src="{{ object.audio.url }}" type="audio/ogg" />
+                            <source src="{{ object.audio.url }}" type="audio/mpeg" />
+                            <source src="{{ object.audio.url }}" type="audio/wav" />
+                            <source src="{{ object.audio.url }}" type="audio/mp3" />
+                            <source src="{{ object.audio.url }}" type="audio/acc" />
+                            <source src="{{ object.audio.url }}" type="audio/aif" />
                         </audio>
                     {% endif %}
+                    <hr>
+{#                    {% if object.youtube %}#}
+{#                        <h4 class="detail_h4">Youtube</h4>#}
+{#                        <p>※ユーチューブにダンスムービーがあるようでしたらお願いします。</p>#}
+{#                        <iframe width="560" height="315" src="{{ object.youtube }}" ></iframe>#}
+{#                    {% endif %}#}
+{#                    <hr>#}
                     {% if object.number_of_people %}
-                        <p>構成人数</p>
-                        {{ object.number_of_people }}名
+                        <h4 class="detail_h4">構成人数</h4>
+                        <p>{{ object.number_of_people }}名</p>
                     {% endif %}
+                    <hr>
+                    {% if object.activity_histori %}
+                        <h4>活動歴</h4>
+                        <p>{{ object.activity_histori }}</p>
+                    {% endif %}
+                    <hr>
+                    {% if object.genre %}
+                        <h4>ジャンル</h4>
+                        <p>{{ object.genre }}</p>
+                    {% endif %}
+                    <hr>
+                    {% if object.school_name %}
+                        <h4>スクール名</h4>
+                        <p>{{ object.school_name }}</p>
+                    {% endif %}
+                    <hr>
+                    {%  if object.representative %}
+                        <h4>代表者名</h4>
+                        <p>{{ object.representative }}</p>
+                        <p>※連絡のつく代表者を記入ください。</p>
+                    {% endif %}
+                    <hr>
+                    {% if object.telephone_number %}
+                        <h4>電話番号</h4>
+                        <p>{{ object.telephone_number }}</p>
+                    {% endif %}
+                    <hr>
+                    {% if object.email %}
+                        <h4>メールアドレス</h4>
+                        <p>{{ object.email }}</p>
+                    {% endif %}
+                    <hr>
+                    {% if object.comment %}
+                        <h4>コメント・実績・PRなどなど </h4>
+                        <p>{{ object.comment }}</p>
+                    {% endif %}
+                    <hr>
                     <div class="clearfix">
                     {% if object == true %}
                         <span aria-hidden="true">

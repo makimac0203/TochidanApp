@@ -18,18 +18,21 @@
                             {% if tochidan_user.photo %}
                                 <img src="/media/{{ tochidan_user.photo }}" width="50px">
                             {% endif %}
-                            {% if tochidan_user.record %}
+                            {% if tochidan_user.audio %}
                                 <audio controls="controls">
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/ogg" />
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/mpeg" />
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/wav" />
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/mp3" />
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/acc" />
-                                    <source src="{{ tochidan_user.record.url }}" type="audio/aif" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/ogg" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/mpeg" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/wav" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/mp3" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/acc" />
+                                    <source src="{{ tochidan_user.audio.url }}" type="audio/aif" />
                                 </audio>
                             {% endif %}
                             {% if tochidan_user.created_at %}
-                                <p class="post-meta">{{ tochidan_user.created_at }}</p>
+                                <p class="post-meta">登録日時 : {{ tochidan_user.created_at }}</p>
+                            {% endif %}
+                            {% if tochidan_user.updated_at %}
+                                <p class="post-meta">更新日時 : {{ tochidan_user.updated_at }}</p>
                             {% endif %}
                         </div>
                         </a>

@@ -48,10 +48,34 @@ class ContactForm(forms.Form):
 
 class TochidanCreateForm(forms.ModelForm):
     number_of_people = forms.ChoiceField(choices=[(num, num) for num in range(1, 101)])
+    number_of_people.label = "構成人数"
+
+    activity_histori = forms.ChoiceField(
+        choices=(
+            ("", ""),
+            ('3ヶ月未満', '3ヶ月未満'),
+            ('3ヶ月〜6ヶ月', '3ヶ月〜6ヶ月'),
+            ('6ヶ月〜1年', '6ヶ月〜1年'),
+            ('1年以上', '1年以上'),
+        )
+    )
+    activity_histori.label = "活動歴"
 
     class Meta:
         model = TochidanApp
-        fields = ('team_name', 'photo', 'record', 'number_of_people',)
+        fields = (
+                  'team_name',
+                  'photo',
+                  'audio',
+                  'number_of_people',
+                  'genre',
+                  'representative',
+                  'telephone_number',
+                  'email',
+                  'school_name',
+                  'activity_histori',
+                  'comment',
+                  )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
