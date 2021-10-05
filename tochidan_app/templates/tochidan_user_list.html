@@ -15,8 +15,9 @@
                             <h2 class="post-title">
                                 {{ tochidan_user.team_name }}
                             </h2>
+                            <div class="user-list">
                             {% if tochidan_user.photo %}
-                                <img src="/media/{{ tochidan_user.photo }}" width="50px">
+                                <img class="img-list" src="/media/{{ tochidan_user.photo }}" width="70px">
                             {% endif %}
                             {% if tochidan_user.audio %}
                                 <audio controls="controls">
@@ -28,12 +29,15 @@
                                     <source src="{{ tochidan_user.audio.url }}" type="audio/aif" />
                                 </audio>
                             {% endif %}
+                            </div>
+                            <div class="user-list-date">
                             {% if tochidan_user.created_at %}
                                 <p class="post-meta">登録日時 : {{ tochidan_user.created_at }}</p>
                             {% endif %}
                             {% if tochidan_user.updated_at %}
                                 <p class="post-meta">更新日時 : {{ tochidan_user.updated_at }}</p>
                             {% endif %}
+                            </div>
                         </div>
                         </a>
                         <hr>

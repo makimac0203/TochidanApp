@@ -2,13 +2,36 @@
 
 
 {% block main %}
+<div class="main-wrap">
     <main class="masthead text-center text-white">
         <div class="container">
-            <h1>TochiDanApp</h1>
+            <h1 class="display-1">TochiDanApp</h1>
             <h2>ダンスコンテストへのエントリーありがとうございます！</h2>
             <p>このウェブサイトよりあなたのダンスチームの情報を登録してください。</p>
-            <a href="{% url 'account_login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">ログイン</a>
+            <p>コロナウイルスの感染拡大を抑止する為、不特定多数の接触を極力控えるためにCD等のメディアの直接手渡しを抑えることと、音源のかけ間違えや再生エラー、各チーム音量の均等性を保つことを目的としています。</p>
+            <p>尚、音源をアップロードできないチームはCDで預かることもできますのでご相談ください。</p>
+
+            <div class="btn-main d-grid gap-2 col-6 mx-auto">
+                <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">ログイン</a>
+            </div>
+            <div class="how-to">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>登録の手順</h4>
+                    </div>
+                    <div class="card-body">
+                        <ol>
+                            <li>新規登録より必要項目を入力して登録ボタンを押します。</li>
+                            <li>入力したメールアドレス宛てにメールが届いたら承認します。</li>
+                            <li>ログインより登録したメールアドレスとパスワードを入力してログインボタンを押します。</li>
+                            <li>必要な項目を入力して登録ボタンをおします。</li>
+                            <li>マイページのリンクから登録した内容が問題なければ登録完了です。必要に応じて編集ボタンを押して編集して下さい。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+</div>
 {% endblock %}
 

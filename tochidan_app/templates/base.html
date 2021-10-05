@@ -16,6 +16,7 @@
     <nav class="navbar  navbar-expand-lg  navbar-dark bg-dark ">
         <div class="container justify-content-between">
             <a class="navbar-brand" href="{% url 'tochidan_app:index' %}">TochiDanApp</a>
+            <div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,9 +34,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
                         </li>
-                        <li class="nav-item">
-                            <p>{{ user }}でログイン中</p>
-                        </li>
                     {% else %}
                         <li class="nav-item {% block active_signup %}{% endblock %}">
                             <a class="nav-link" href="{% url 'account_signup' %}">新規登録</a>
@@ -45,6 +43,7 @@
                         </li>
                     {% endif %}
                 </ul>
+            </div>
             </div>
         </div>
     </nav>
@@ -70,11 +69,18 @@
         </div>
     </main>
     <footer>
-        <ul>
-            <li>
-                <a href="{% url 'tochidan_app:contact' %}">お問い合わせ</a>
-            </li>
-        </ul>
+        <div class="footer-content">
+            <div class="copy">
+                &copy;TochiDanApp, 2021 All Rights Reserved
+            </div>
+            <div class="footer-wrap">
+                <div class="footer-left">
+                </div>
+                <div class="footer-right">
+                    <a class="link-light" href="{% url 'tochidan_app:contact' %}">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

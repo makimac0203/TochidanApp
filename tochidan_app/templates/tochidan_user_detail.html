@@ -14,19 +14,21 @@
                     <hr>
                     {% if object.photo %}
                         <h4>チーム写真</h4>
-                        <img src="/media/{{ object.photo }}" width="300px">
+                        <img src="/media/{{ object.photo }}" class="rounded mx-auto d-block" alt="...">
                     {% endif %}
                     <hr>
                     {% if object.audio %}
                         <h4>使用曲</h4>
-                        <audio controls="controls">
-                            <source src="{{ object.audio.url }}" type="audio/ogg" />
-                            <source src="{{ object.audio.url }}" type="audio/mpeg" />
-                            <source src="{{ object.audio.url }}" type="audio/wav" />
-                            <source src="{{ object.audio.url }}" type="audio/mp3" />
-                            <source src="{{ object.audio.url }}" type="audio/acc" />
-                            <source src="{{ object.audio.url }}" type="audio/aif" />
-                        </audio>
+                        <div class="audio">
+                            <audio controls="controls">
+                                <source src="{{ object.audio.url }}" type="audio/ogg" />
+                                <source src="{{ object.audio.url }}" type="audio/mpeg" />
+                                <source src="{{ object.audio.url }}" type="audio/wav" />
+                                <source src="{{ object.audio.url }}" type="audio/mp3" />
+                                <source src="{{ object.audio.url }}" type="audio/acc" />
+                                <source src="{{ object.audio.url }}" type="audio/aif" />
+                            </audio>
+                        </div>
                     {% endif %}
                     <hr>
 {#                    {% if object.youtube %}#}

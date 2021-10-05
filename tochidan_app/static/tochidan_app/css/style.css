@@ -1,7 +1,10 @@
 body {
     height: 100%;
     width: 100%;
+
 }
+
+
 
 nav p {
     color: aliceblue;
@@ -9,15 +12,36 @@ nav p {
 
 
 
-
 main {
-    padding: 6rem 0;
-/*    background-color: cornflowerblue;*/
-/*    height: 100%;*/
+    padding: 4rem 0;
+
+}
+
+
+
+.carousel-caption-width {
+    width: 50%;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin-bottom: 30px;
 }
 
 .container {
     color: dimgrey;
+}
+
+.btn-main {
+    margin-top: 80px;
+}
+
+.audio{
+    display: flex;
+    justify-content: center;
 }
 
 footer {
@@ -34,3 +58,40 @@ footer {
     margin-top: 30px;
 }
 
+.user-list {
+    display: flex;
+}
+
+.user-list-date{
+    display: flex;
+}
+
+.user-list-date p{
+    margin: 10px 20px 0 0;
+}
+
+.img-list {
+    margin-right: 30px;
+}
+
+.footer-right {
+    float: right;
+}
+
+footer {
+    padding: 20px 40px;
+}
+
+.copy {
+    text-align: center;
+    color: gainsboro;
+}
+
+.how-to {
+    text-align: left;
+    margin: 150px 0 ;
+}
+
+.how-to li {
+    font-size: 25px;
+}
