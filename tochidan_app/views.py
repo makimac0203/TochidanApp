@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -10,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import TochidanApp
 from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
+logger = logging.getLogger(__name__)
 
 
 class IndexView(generic.TemplateView):
