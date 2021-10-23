@@ -10,8 +10,10 @@ class TochidanApp(models.Model):
 
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     team_name = models.CharField(verbose_name='チーム名', max_length=40)
+    yomigana = models.CharField(verbose_name='チーム読み仮名', max_length=40)
     photo = models.ImageField(verbose_name='チーム写真', upload_to='image/', blank=True, null=True)
     audio = models.FileField(verbose_name='使用曲', upload_to='audio/', blank=True, null=True)
+    start = models.CharField('ダンス開始きっかけ', max_length=40, blank=True, null=True)
     number_of_people = models.IntegerField(verbose_name='構成人数', blank=True, null=True,)
     activity_histori = models.CharField('活動歴', max_length=40, blank=True, null=True)
     youtube = EmbedVideoField(verbose_name='ユーチューブ', blank=True, null=True)

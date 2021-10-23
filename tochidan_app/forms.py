@@ -50,6 +50,15 @@ class TochidanCreateForm(forms.ModelForm):
     number_of_people = forms.ChoiceField(choices=[(num, num) for num in range(1, 101)])
     number_of_people.label = "構成人数"
 
+    start = forms.ChoiceField(
+        choices=(
+            ("", ""),
+            ('音先', '音先'),
+            ('板先', '板先'),
+        )
+    )
+    start.label = "ダンス開始きっかけ"
+
     activity_histori = forms.ChoiceField(
         choices=(
             ("", ""),
@@ -65,8 +74,10 @@ class TochidanCreateForm(forms.ModelForm):
         model = TochidanApp
         fields = (
                   'team_name',
+                  'yomigana',
                   'photo',
                   'audio',
+                  'start',
                   'number_of_people',
                   'genre',
                   'representative',
