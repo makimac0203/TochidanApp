@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'phonenumber_field',
     'embed_video',
+    'django_ses',
 ]
 
 MIDDLEWARE = [
@@ -167,46 +168,6 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
 }
 
-
-# LOGGINGは settings_dev.py に移している
-
-# ロギング設定
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-
-    # ロガーの設定
-    # 'loggers': {
-        # Djangoが利用するロガー
-        # 'django': {
-        #     'handlers': ['console'],
-        #     'level': 'INFO',
-        # },
-        # tochidan_appアプリケーションが利用するロガー
-    #     'tochidan_app': {
-    #         'handlers': ['console'],
-    #         'level': 'DEBUG',
-    #     },
-    # },
-
-    # ハンドラの設定
-    # 'handlers': {
-    #     'console': {
-    #         'level': 'DEBUG',
-    #         'class': 'logging.StreamHandler',
-    #         'formatter': 'dev'
-    #     },
-    # },
-
-    # フォーマッタの設定
-#     'formatters': {
-#         'dev': {
-#             'format': '\t'.join([
-#                 '%(asctime)s',
-#                 '[%(levelname)s]',
-#                 '%(pathname)s(Line:%(lineno)d)',
-#                 '%(message)s'
-#             ])
-#         },
-#     }
-# }
+# バックアップバッチ用
+BACKUP_PATH = 'backup/'
+NUM_SAVED_BACKUP = 30
