@@ -7,5 +7,5 @@ from django.contrib.auth.forms import UserCreationForm
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('tochidan_app.urls')),
-                  path('acconts/', include('allauth.urls')),
+                  path('accounts/', include('allauth.urls')),
               ]

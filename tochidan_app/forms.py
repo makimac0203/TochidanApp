@@ -73,20 +73,20 @@ class TochidanCreateForm(forms.ModelForm):
     class Meta:
         model = TochidanApp
         fields = (
-                  'team_name',
-                  'yomigana',
-                  'photo',
-                  'audio',
-                  'start',
-                  'number_of_people',
-                  'genre',
-                  'representative',
-                  'telephone_number',
-                  'email',
-                  'school_name',
-                  'activity_histori',
-                  'comment',
-                  )
+            'team_name',
+            'yomigana',
+            'photo',
+            'audio',
+            'start',
+            'number_of_people',
+            'genre',
+            'representative',
+            'telephone_number',
+            'email',
+            'school_name',
+            'activity_histori',
+            'comment',
+        )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
