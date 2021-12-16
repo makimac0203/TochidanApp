@@ -8,7 +8,7 @@ from django.db import models
 
 class TochidanApp(models.Model):
 
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, primary_key=True, on_delete=models.CASCADE) # primary_key=TrueはCustomUserから参照したidと照合して返す、だからテーブル主キーのidは無視される
     team_name = models.CharField(verbose_name='チーム名', max_length=40)
     yomigana = models.CharField(verbose_name='チーム読み仮名', max_length=40)
     photo = models.ImageField(verbose_name='チーム写真', upload_to='image/', blank=True, null=True)
