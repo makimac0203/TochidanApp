@@ -3,12 +3,12 @@ import logging
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from django.views.generic.edit import FormView
 from .forms import ContactForm, TochidanCreateForm
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import TochidanApp
 from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
 
@@ -39,10 +39,16 @@ class ContactResultView(TemplateView):
         return context
 
 
-class TochidanUserDetailView(LoginRequiredMixin, generic.DetailView):
+
+class TochidanUserDetailView(UserPassesTestMixin, LoginRequiredMixin, generic.DetailView):
     model = TochidanApp
     template_name = 'tochidan_user_detail.html'
     pk_url_kwarg = 'pk'
+    # UserPassesTestMixinのtest_funkによりsuperuser意外をURLのidを変えて他のユーザーページへの閲覧を防止する
+    def test_func(self):
+        # pkが現在ログイン中ユーザと同じ、またはsuperuserならOK。
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser
 
 
 class TochidanUserCreateView(LoginRequiredMixin, generic.CreateView):
