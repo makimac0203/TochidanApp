@@ -4,6 +4,14 @@
 
 <br>
 <br>
+## 本番環境での使用技術
+・AWS(ES2, RDS(PostgreSQL), S3)
+・Nginx
+・Ubuntu
+・SendGrid
+
+<br>
+<br>
 
 
 ## トップページ
