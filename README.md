@@ -17,12 +17,12 @@
 <br>
 
 ## 本番環境での使用技術
-  
-・AWS(ES2, RDS(PostgreSQL), S3)<br>
-・Nginx<br>
-・Ubuntu<br>
-・SendGrid<br>
-
+<ul>  
+  <li>AWS(ES2, RDS(PostgreSQL), S3)</li>
+  <li>Nginx</li>
+  <li>Ubuntu</li>
+  <li>SendGrid</li>
+</ul>
 <br>
 <br>
 
